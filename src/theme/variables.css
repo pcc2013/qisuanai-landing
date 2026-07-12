@@ -1,0 +1,65 @@
+/* D:\nira-app\src\theme\variables.css */
+
+:root {
+  --nira-bg-warm: #F5F0EB;
+  --nira-bg-blue: #DCE8F0;
+  --nira-text-primary: #3D362F;
+  --nira-text-secondary: #8B7D72;
+  --nira-brand-gold: #C4A882;
+  --nira-link: #4A90D9;
+  --nira-bubble-user: #F0D5C7;
+  --nira-bubble-ai: #FFFFFF;
+  --nira-danger: #E88B7D;
+  --ion-background-color: #F5F0EB;
+
+  /* 安全区 */
+  --ion-safe-area-top: env(safe-area-inset-top, 0px);
+  --ion-safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --ion-safe-area-left: env(safe-area-inset-left, 0px);
+  --ion-safe-area-right: env(safe-area-inset-right, 0px);
+}
+
+[data-theme="cool"] {
+  --nira-bg-warm: #EEF2F7;
+  --nira-bg-blue: #D0DDEB;
+}
+
+/* 最小触摸目标 44×44px */
+ion-button,
+ion-item,
+button,
+[role="button"],
+.clickable {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Ionic 安全区适配 */
+ion-content {
+  --background: var(--nira-bg-warm);
+  --padding-top: var(--ion-safe-area-top);
+  --padding-bottom: var(--ion-safe-area-bottom);
+}
+
+ion-header {
+  padding-top: var(--ion-safe-area-top);
+}
+
+ion-footer {
+  padding-bottom: var(--ion-safe-area-bottom);
+}
+
+ion-tab-bar {
+  padding-bottom: var(--ion-safe-area-bottom);
+}
+
+.footer-input-bar {
+  background-color: var(--nira-bg-warm);
+  border-top: 0.5px solid #E0D8CE;
+  padding-bottom: var(--ion-safe-area-bottom);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}

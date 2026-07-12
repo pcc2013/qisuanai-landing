@@ -1,0 +1,39 @@
+.toast-base {
+  position: fixed;
+  top: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  animation: toastFadeIn 0.4s ease;
+}
+
+.toast-base.toast-active {
+  animation: toastFadeIn 0.4s ease, toastFadeOut 0.4s ease 2.6s forwards;
+}
+
+.toast-base.toast-placeholder {
+  opacity: 0.7;
+}
+
+.toast-base ion-chip {
+  padding: 8px 16px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+}
+
+@keyframes toastFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes toastFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
