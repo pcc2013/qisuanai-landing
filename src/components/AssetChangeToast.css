@@ -1,7 +1,0 @@
-.asset-change-toast ion-chip {
-  background: var(--ion-color-tertiary-tint);
-}
-
-.asset-change-toast.toast-placeholder ion-chip {
-  opacity: 0.7;
-}

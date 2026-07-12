@@ -1,1 +1,0 @@
-{"version": 1, "include": ["/app/*"], "exclude": ["/index.html", "/app.html", "/about.html", "/privacy-policy.html", "/terms-of-service.html", "/contact.html", "/privacy-policy.md", "/terms-of-service.md", "/ads.txt", "/sitemap.xml", "/robots.txt", "/favicon.png", "/manifest.json"]} 
