@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#DCE8F0">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <title>CogCloud AI — Autonomous AI Content Operations Platform | QisuanAI</title>
+    <meta name="description" content="CogCloud AI provides autonomous AI-powered content operations for enterprises. Multi-vertical sites, video channels, and multi-platform distribution with minimal human intervention. Private deployment available.">
+    <meta name="keywords" content="AI content operations, autonomous content platform, AI content factory, enterprise AI deployment, CogCloud, private AI infrastructure">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CogCloud AI — Autonomous Content Operations">
+    <meta property="og:description" content="Full-pipeline autonomous AI content operations. Multi-vertical, multi-channel, zero manual intervention. Private deployment available.">
+    <meta property="og:url" content="https://qisuanai.com/cogcloud.html">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-y: auto !important; }
+        body {
+            margin: 0; padding: 0; background-color: #F3EFE8;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            overflow-x: hidden; overflow-y: auto !important;
+        }
+
+        .site-header {
+            position: sticky; top: 0; z-index: 100; width: 100%; padding: 0;
+            transition: all 0.3s ease; background: rgba(243,239,232,0.92);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid transparent;
+        }
+        .site-header.scrolled {
+            background: rgba(255,255,255,0.96); border-bottom: 1px solid #E2E8F0;
+            box-shadow: 0 1px 8px rgba(16,80,209,0.06);
+        }
+        .header-gradient-bar { height: 4px; background: linear-gradient(90deg,#1050D1,#23D1D1,#ff7a45,#9254de); }
+        .header-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 32px;
+            display: flex; align-items: center; justify-content: space-between; height: 64px;
+        }
+        .header-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+        .header-logo .logo-text { font-size: 1.5em; font-weight: 800; color: #0F172A; }
+        .header-logo .logo-text span { color: #1050D1; }
+        .header-nav { display: flex; gap: 4px; align-items: center; }
+        .header-nav a {
+            color: #334155; font-weight: 500; text-decoration: none; font-size: 0.94em;
+            padding: 8px 14px; border-radius: 8px; transition: all 0.2s ease;
+        }
+        .header-nav a:hover { color: #1050D1; background: rgba(16,80,209,0.05); }
+        .header-nav a.active { color: #1050D1; background: rgba(16,80,209,0.08); font-weight: 600; }
+        .header-actions { display: flex; gap: 12px; align-items: center; }
+        .header-btn-light {
+            padding: 10px 20px; border-radius: 10px; border: 1px solid #E2E8F0;
+            color: #0F172A; text-decoration: none; font-weight: 600; font-size: 0.9em;
+            transition: all 0.24s; white-space: nowrap;
+        }
+        .header-btn-light:hover { border-color: #1050D1; background: rgba(16,80,209,0.06); }
+        .header-btn-primary {
+            padding: 10px 22px; border-radius: 10px; background: #1050D1; color: #fff;
+            text-decoration: none; font-weight: 600; font-size: 0.9em; transition: all 0.24s; white-space: nowrap;
+        }
+        .header-btn-primary:hover { background: #0D45B0; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(16,80,209,0.25); }
+
+        .page { max-width: 880px; margin: 0 auto; padding: 60px 32px; line-height: 1.95; }
+        .page h1 { font-size: 2.4em; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; color: #0F172A; }
+        .page h2 { font-size: 1.5em; font-weight: 600; margin: 56px 0 20px; padding-bottom: 14px; border-bottom: 1px solid #E2E8F0; color: #1050D1; position: relative; }
+        .page h2::after { content: ""; position: absolute; left: 0; bottom: -1px; width: 90px; height: 2px; background: linear-gradient(90deg,#1050D1,#23D1D1); }
+        .page h3 { font-size: 1.18em; font-weight: 600; margin: 28px 0 10px; color: #0F172A; }
+        .page p { margin-bottom: 16px; color: #334155; font-size: 1.02em; }
+        .page a { color: #1050D1; text-decoration: none; font-weight: 500; transition: color 0.24s; }
+        .page a:hover { color: #23D1D1; }
+        .subtitle { font-size: 1.08em; color: #475569; margin-bottom: 28px; max-width: 640px; }
+        .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 32px; }
+        .pill { background: #FFFFFF; color: #1050D1; padding: 8px 18px; border: 1px solid rgba(16,80,209,0.2); border-radius: 20px; font-size: 0.88em; font-weight: 500; }
+        .stat-row { display: flex; gap: 56px; margin: 32px 0; flex-wrap: wrap; }
+        .stat-val { font-size: 2.2em; font-weight: 700; color: #1050D1; line-height: 1.15; }
+        .stat-label { font-size: 0.88em; color: #64748B; font-weight: 500; }
+        .quote { background: #FFFFFF; border: 1px solid #E2E8F0; border-left: 3px solid #1050D1; padding: 20px 24px; margin: 28px 0; color: #475569; border-radius: 0 12px 12px 0; font-size: 0.98em; }
+        ul { margin: 12px 0 20px 22px; color: #334155; }
+        li { margin-bottom: 8px; font-size: 1em; }
+        li strong { color: #0F172A; }
+        .cta-btn { display: inline-block; margin-top: 28px; padding: 14px 34px; background: #1050D1; color: #fff; border-radius: 12px; font-weight: 700; text-decoration: none; font-size: 1em; transition: all 0.24s; }
+        .cta-btn:hover { background: #0D45B0; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(16,80,209,0.2); color: #fff; }
+        .footer { margin-top: 72px; padding-top: 32px; border-top: 1px solid #E2E8F0; color: #64748B; font-size: 0.9em; text-align: center; }
+        .footer a { color: #64748B; margin: 0 12px; text-decoration: none; }
+        .footer a:hover { color: #1050D1; }
+
+        @media (max-width: 767px) {
+            .header-inner { padding: 0 14px; height: 56px; }
+            .header-nav { display: none; }
+            .page { padding: 32px 16px; }
+            .page h1 { font-size: 1.8em; }
+            .stat-row { gap: 28px; }
+            .stat-val { font-size: 1.7em; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+    <div class="header-gradient-bar"></div>
+    <div class="header-inner">
+        <a href="/" class="header-logo">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="#1050D1"/>
+                <path d="M8 22 L16 8 L24 22" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="20" r="2" fill="white"/><circle cx="20" cy="20" r="2" fill="white"/>
+            </svg>
+            <span class="logo-text"><span>Cog</span>Cloud</span>
+        </a>
+        <nav class="header-nav">
+            <a href="/">Home</a>
+            <a href="/nira.html">Nira</a>
+            <a href="/cogcloud.html" class="active">CogCloud</a>
+            <a href="/pricing.html">Pricing</a>
+            <a href="/about.html">About</a>
+        </nav>
+        <div class="header-actions">
+            <a href="/?app=1" class="header-btn-light">💭 Try Nira</a>
+            <a href="/contact.html" class="header-btn-primary">Contact Sales</a>
+        </div>
+    </div>
+</header>
+
+<main class="page">
+    <h1>CogCloud AI</h1>
+    <p class="subtitle">Autonomous AI content operations platform — built for enterprises that need consistent, high-quality content across multiple verticals, channels, and languages without scaling headcount.</p>
+
+    <div class="pill-row">
+        <span class="pill">Content Production</span>
+        <span class="pill">Video Generation</span>
+        <span class="pill">Multi-Platform Distribution</span>
+        <span class="pill">Private Deployment</span>
+        <span class="pill">24/7 Autonomous</span>
+    </div>
+
+    <div class="stat-row">
+        <div><div class="stat-val">5+</div><div class="stat-label">Vertical Sites Managed</div></div>
+        <div><div class="stat-val">15×</div><div class="stat-label">Output-to-Cost Ratio</div></div>
+        <div><div class="stat-val">0</div><div class="stat-label">Daily Manual Interventions</div></div>
+    </div>
+
+    <h2>What CogCloud AI Does</h2>
+    <p>CogCloud AI is an autonomous content operations system developed by QisuanAI. It handles the full pipeline — from topic discovery and content drafting to video production and cross-platform publishing — across multiple verticals simultaneously. Enterprises use CogCloud AI to operate content sites, video channels, and social media accounts at a scale that would otherwise require dedicated editorial, video, and distribution teams.</p>
+    <p>The platform is not a one-off generator. It is a persistent operating layer that runs continuously, adapts to trending signals, and maintains editorial consistency across every piece it produces. Once configured, it requires no manual workflow triggers, no content calendars, and no human review gates — though all three remain available as optional controls.</p>
+
+    <div class="quote">
+        "We built CogCloud AI to solve our own content scaling problem. When the system started outperforming our manual output at a fraction of the cost, we knew we had something worth offering to other enterprises."<br>
+        <span style="font-style:normal;font-weight:600;">— QisuanAI Engineering Team</span>
+    </div>
+
+    <h2>How It Works</h2>
+    <h3>1. Intelligent Topic Discovery</h3>
+    <p>CogCloud AI ingests signals from curated RSS feeds, real-time trending indices, and community discussion aggregators across multiple languages. Its editorial decision engine evaluates each topic for relevance, timeliness, and audience fit — selecting what to cover and in which format, across which vertical.</p>
+
+    <h3>2. Multi-Persona Content Writing</h3>
+    <p>Unlike generic AI writing tools, CogCloud AI assigns a distinct editorial persona to each vertical. A gaming review is written by a passionate player. A crypto market analysis is written by a skeptical trader. A wellness story is written by an empathetic narrator. This persona-layer ensures that content across different verticals does not read like it came from the same template.</p>
+
+    <h3>3. Automated Video Production</h3>
+    <p>CogCloud AI generates short-form and long-form video content by combining AI-generated scripts, synthetic voice narration, licensed stock footage, and on-screen subtitles. The video pipeline runs autonomously — from script to final render — producing platform-ready files for YouTube, TikTok, and domestic short-video platforms.</p>
+
+    <h3>4. Multi-Platform Publishing</h3>
+    <p>Content produced by CogCloud AI is automatically deployed to web properties with SEO markup, sitemaps, and structured data — plus YouTube channels and domestic platforms. Each piece carries appropriate metadata, schema markup, and platform-specific formatting with no manual reformatting required.</p>
+
+    <p><strong>📺 See it in action:</strong> <a href="https://www.youtube.com/@AutoPassiveAIFactory" target="_blank" rel="noopener">Watch CogCloud's autonomous video production on YouTube →</a></p>
+
+    <h2>What Makes It Different</h2>
+    <ul>
+        <li><strong>Persistent, not transactional.</strong> CogCloud AI runs as an ongoing operation, not a one-shot generation tool. It maintains memory across content cycles and adapts its editorial strategy over time.</li>
+        <li><strong>Persona-native writing.</strong> Every piece is written from a defined editorial identity — not a generic "AI assistant" voice. This preserves brand integrity across verticals.</li>
+        <li><strong>Full pipeline, not a toolkit.</strong> Topic discovery, writing, video production, SEO, and distribution are integrated into one autonomous workflow. You define the verticals; the system runs them.</li>
+        <li><strong>Private deployment ready.</strong> CogCloud AI is available as a private deployment package for enterprises that require data sovereignty, custom model routing, and dedicated compute resources.</li>
+    </ul>
+
+    <h2>Use Cases</h2>
+    <ul>
+        <li><strong>Media companies</strong> operating multi-vertical content sites that need consistent daily output without expanding editorial staff.</li>
+        <li><strong>Blockchain and Web3 projects</strong> requiring real-time market commentary, protocol analysis, and community-facing content across multiple channels.</li>
+        <li><strong>E-commerce and SaaS brands</strong> building organic traffic through SEO-optimized content hubs and video channels.</li>
+        <li><strong>Agencies</strong> managing content operations for multiple clients who want to standardize quality while reducing per-client overhead.</li>
+    </ul>
+
+    <h2>Enterprise Deployment</h2>
+    <p>CogCloud AI is offered as a private deployment package. Each deployment includes the complete autonomous pipeline, configuration for your verticals and distribution channels, dedicated compute allocation, and ongoing technical support. Deployment typically completes within five business days, after which the system operates autonomously with optional human oversight controls.</p>
+    <p>All content infrastructure — websites, video channels, distribution workflows — is included in the deployment scope. Enterprises retain full ownership of all produced content, data, and distribution accounts.</p>
+
+    <h2>Technical Commitments</h2>
+    <ul>
+        <li><strong>Data isolation.</strong> Each deployment runs on dedicated compute resources. Your content data, model routing configurations, and distribution credentials are fully isolated.</li>
+        <li><strong>No training on your data.</strong> CogCloud AI does not use enterprise content for model training. Your editorial style, proprietary data, and audience insights remain yours alone.</li>
+        <li><strong>Auditable logs.</strong> Every content decision — topic selection, persona assignment, publishing action — is logged and available for review.</li>
+        <li><strong>Region-flexible hosting.</strong> Deployments are available across multiple cloud regions to meet data residency requirements.</li>
+    </ul>
+
+    <div class="stat-row">
+        <div><div class="stat-val">5d</div><div class="stat-label">Typical Deployment Time</div></div>
+        <div><div class="stat-val">24/7</div><div class="stat-label">Autonomous Operation</div></div>
+        <div><div class="stat-val">100%</div><div class="stat-label">Content Ownership</div></div>
+    </div>
+
+    <a href="mailto:shuzixiansheng@qisuanai.cn" class="cta-btn">Request Deployment Details →</a>
+
+    <div class="footer">
+        <p>
+            <a href="/privacy-policy.html">Privacy Policy</a> |
+            <a href="/terms-of-service.html">Terms of Service</a> |
+            <a href="/about.html">About Us</a> |
+            <a href="/contact.html">Contact</a> |
+            <a href="https://www.youtube.com/@AutoPassiveAIFactory" target="_blank" rel="noopener">📺 YouTube</a>
+        </p>
+        <p>&copy; 2026 QisuanAI. All rights reserved. CogCloud is a trademark of QisuanAI.</p>
+    </div>
+</main>
+
+<script>
+    const header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 60));
+</script>
+</body>
+</html>

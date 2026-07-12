@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#DCE8F0">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <title>CogCloud AI — AI Self-Growing Ecosystem | Nira AI Companion | QisuanAI</title>
+    <meta name="description" content="CogCloud AI powers Nira. Nira proves CogCloud AI. Autonomous AI content platforms and 22 digital human personas — one self-growing ecosystem.">
+    <meta name="keywords" content="AI content factory, autonomous content system, AI digital human, Nira companion, CogCloud AI, private AI deployment">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CogCloud AI — AI Self-Growing Ecosystem">
+    <meta property="og:description" content="AI that runs itself. 22 digital humans. 5 content sites. Zero human touch. Built by QisuanAI.">
+    <meta property="og:image" content="/og-preview.png">
+    <meta property="og:url" content="https://qisuanai.com">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"Organization",
+      "name":"QisuanAI",
+      "brand":"CogCloud AI",
+      "product":["CogCloud AI Full-Auto Content Factory","Nira AI Emotional Companion"],
+      "description":"Integrated AI ecosystem combining B-end autonomous content production platform and C-end digital human companion product.",
+      "email":"shuzixiansheng@qisuanai.cn",
+      "address":{"@type":"PostalAddress","addressLocality":"Singapore"}
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-y: auto !important; }
+        body {
+            margin: 0; padding: 0; background-color: #F3EFE8;
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            overflow-x: hidden; overflow-y: auto !important;
+        }
+
+        .site-header {
+            position: sticky; top: 0; z-index: 100; width: 100%; padding: 0;
+            transition: all 0.3s ease; background: rgba(243,239,232,0.92);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid transparent;
+        }
+        .site-header.scrolled {
+            background: rgba(255,255,255,0.96); border-bottom: 1px solid #E2E8F0;
+            box-shadow: 0 1px 8px rgba(16,80,209,0.06);
+        }
+        .header-gradient-bar { height: 4px; background: linear-gradient(90deg,#1050D1,#23D1D1,#ff7a45,#9254de); }
+        .header-inner {
+            max-width: 1200px; margin: 0 auto; padding: 0 32px;
+            display: flex; align-items: center; justify-content: space-between; height: 64px;
+        }
+        .header-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+        .header-logo .logo-text { font-size: 1.5em; font-weight: 800; color: #0F172A; }
+        .header-logo .logo-text span { color: #1050D1; }
+
+        .header-nav { display: flex; gap: 4px; align-items: center; margin: 0 24px; }
+        .nav-item { position: relative; }
+        .nav-link {
+            color: #334155; font-weight: 500; text-decoration: none; font-size: 0.94em;
+            padding: 8px 14px; border-radius: 8px; transition: all 0.2s ease;
+            display: flex; align-items: center; gap: 4px; white-space: nowrap; cursor: pointer;
+        }
+        .nav-link:hover { color: #1050D1; background: rgba(16,80,209,0.05); }
+        .nav-link .arrow { font-size: 0.7em; transition: transform 0.3s ease; color: #94A3B8; }
+        .nav-item:hover > .nav-link .arrow { transform: rotate(180deg); color: #1050D1; }
+
+        .mega-menu {
+            position: absolute; top: calc(100% + 12px); left: 50%;
+            transform: translateX(-50%) translateY(8px);
+            background: #FFFFFF; border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(16,80,209,0.04), 0 10px 30px rgba(16,80,209,0.08), 0 20px 60px rgba(16,80,209,0.06);
+            border: 1px solid #E2E8F0; opacity: 0; visibility: hidden; pointer-events: none;
+            transition: all 0.25s cubic-bezier(0.16,1,0.3,1); z-index: 101; isolation: isolate;
+        }
+        .mega-menu::before {
+            content: ""; position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
+            width: 16px; height: 8px; background: white; clip-path: polygon(50% 0%,0% 100%,100% 100%);
+        }
+        .nav-item:hover .mega-menu,
+        .nav-item:focus-within .mega-menu,
+        .mega-menu.active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+
+        .mega-inner { display: flex; gap: 0; padding: 8px; }
+        .mega-column { flex: 1; padding: 16px 20px; border-right: 1px solid #F1F5F9; }
+        .mega-column:last-child { border-right: none; }
+        .mega-label {
+            font-size: 0.72em; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; color: #94A3B8; margin-bottom: 12px; padding: 0 8px;
+        }
+        .mega-item {
+            display: flex; align-items: flex-start; gap: 12px; padding: 10px 8px;
+            border-radius: 10px; text-decoration: none; color: #334155; transition: all 0.2s ease; cursor: pointer;
+        }
+        .mega-item:hover { background: rgba(16,80,209,0.04); color: #1050D1; }
+        .mega-item .mega-icon { font-size: 1.3em; flex-shrink: 0; width: 28px; text-align: center; }
+        .mega-item .mega-content strong { display: block; font-size: 0.94em; color: #0F172A; margin-bottom: 2px; }
+        .mega-item:hover .mega-content strong { color: #1050D1; }
+        .mega-item .mega-content .mega-desc { display: block; font-size: 0.82em; color: #64748B; line-height: 1.4; }
+        .mega-item .mega-badge {
+            display: inline-block; background: linear-gradient(135deg,#1050D1,#23D1D1); color: white;
+            font-size: 0.68em; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-left: 6px; vertical-align: middle;
+        }
+        .mega-item.featured {
+            background: linear-gradient(135deg,rgba(16,80,209,0.04),rgba(35,209,209,0.04));
+            border: 1px solid rgba(16,80,209,0.1);
+        }
+        .mega-item.featured:hover { border-color: rgba(16,80,209,0.2); }
+        .mega-item.compact { gap: 8px; padding: 8px; font-size: 0.92em; align-items: center; }
+        .mega-item.compact .mega-icon { width: 22px; font-size: 1.1em; }
+        .mega-sub { font-size: 0.8em; color: #94A3B8; margin-left: auto; flex-shrink: 0; align-self: center; }
+
+        .header-actions { display: flex; gap: 12px; align-items: center; flex-shrink: 0; }
+        .header-btn-light {
+            padding: 10px 20px; border-radius: 10px; border: 1px solid #E2E8F0;
+            color: #0F172A; text-decoration: none; font-weight: 600; font-size: 0.9em;
+            transition: all 0.24s; display: flex; align-items: center; gap: 6px; white-space: nowrap;
+        }
+        .header-btn-light:hover { border-color: #1050D1; background: rgba(16,80,209,0.06); }
+        .header-btn-primary {
+            padding: 10px 22px; border-radius: 10px; background: #1050D1; color: #fff;
+            text-decoration: none; font-weight: 600; font-size: 0.9em; transition: all 0.24s; white-space: nowrap;
+        }
+        .header-btn-primary:hover { background: #0D45B0; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(16,80,209,0.25); }
+
+        .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; background: transparent; border: none; cursor: pointer; padding: 8px; z-index: 200; }
+        .hamburger-line { display: block; width: 24px; height: 2.5px; background: #0F172A; border-radius: 2px; transition: all 0.3s ease; }
+        .mobile-menu-btn.open .hamburger-line:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+        .mobile-menu-btn.open .hamburger-line:nth-child(2) { opacity: 0; }
+        .mobile-menu-btn.open .hamburger-line:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+        .mobile-menu { display: none; position: fixed; inset: 0; top: 68px; background: rgba(243,239,232,0.98); backdrop-filter: blur(16px); z-index: 199; overflow-y: auto; padding: 24px; }
+        .mobile-menu.open { display: block; }
+        .mobile-menu-inner { max-width: 480px; margin: 0 auto; }
+        .mobile-section { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid #E2E8F0; }
+        .mobile-section:last-of-type { border-bottom: none; }
+        .mobile-section-title { font-size: 0.72em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #94A3B8; margin-bottom: 12px; }
+        .mobile-section a { display: block; padding: 10px 0; color: #334155; text-decoration: none; font-size: 1.02em; font-weight: 500; transition: color 0.2s; }
+        .mobile-section a:hover { color: #1050D1; }
+        .mobile-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; padding-top: 20px; border-top: 1px solid #E2E8F0; }
+        .mobile-btn-primary { display: block; text-align: center; padding: 14px; border-radius: 12px; background: #1050D1; color: white; text-decoration: none; font-weight: 600; font-size: 1em; }
+        .mobile-btn-secondary { display: block; text-align: center; padding: 14px; border-radius: 12px; border: 1px solid #E2E8F0; color: #0F172A; text-decoration: none; font-weight: 600; font-size: 1em; }
+
+        #landing-page { max-width: 1080px; margin: 0 auto; padding: 60px 32px; line-height: 1.95; background: #F3EFE8; position: relative; z-index: 1; }
+
+        .hero {
+            background: linear-gradient(135deg,#1050D1 0%,#0B3D9E 40%,#0F2B6B 100%);
+            color: #fff; padding: 56px 64px; border-radius: 24px; margin: 0 0 56px;
+            position: relative; overflow: hidden; text-align: center;
+        }
+        .hero::before {
+            content: ""; position: absolute; width: 420px; height: 420px;
+            background: radial-gradient(circle,rgba(35,209,209,0.25) 0%,transparent 70%);
+            border-radius: 50%; top: -160px; right: -120px; pointer-events: none;
+        }
+        .hero::after {
+            content: ""; position: absolute; width: 280px; height: 280px;
+            background: radial-gradient(circle,rgba(255,255,255,0.06) 0%,transparent 70%);
+            border-radius: 50%; bottom: -80px; left: -60px; pointer-events: none;
+        }
+        .hero h1 {
+            font-size: 2.8em; font-weight: 800; color: #fff; margin: 0 0 16px;
+            line-height: 1.15; letter-spacing: -0.03em; position: relative; z-index: 2;
+        }
+        .hero h1 span { color: #23D1D1; }
+        .hero p {
+            font-size: 1.08em; opacity: 0.9; max-width: 600px; margin: 0 auto 36px;
+            position: relative; z-index: 2; color: rgba(255,255,255,0.85); line-height: 1.6;
+        }
+        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2; }
+        .hero-cta {
+            display: inline-block; padding: 16px 34px; border-radius: 14px; font-weight: 700;
+            font-size: 1em; text-decoration: none; transition: all 0.24s;
+        }
+        .hero-cta-primary { background: #fff; color: #1050D1; }
+        .hero-cta-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.18); }
+        .hero-cta-secondary { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(8px); }
+        .hero-cta-secondary:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.4); transform: translateY(-3px); }
+
+        .trust-bar { display: flex; justify-content: center; gap: 72px; margin: 56px 0; text-align: center; flex-wrap: wrap; }
+        .trust-item strong { display: block; font-size: 2.4em; font-weight: 700; color: #1050D1; line-height: 1.2; }
+        .trust-item span { font-size: 0.9em; color: #64748B; font-weight: 500; }
+
+        .dual-cta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin: 40px 0 56px; }
+        .dual-card {
+            background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 20px;
+            padding: 40px 36px; transition: all 0.28s ease; text-decoration: none; color: inherit;
+            display: flex; flex-direction: column;
+        }
+        .dual-card:hover { border-color: rgba(16,80,209,0.35); transform: translateY(-6px); box-shadow: 0 12px 32px rgba(16,80,209,0.08); }
+        .dual-card .card-icon { font-size: 2.4em; margin-bottom: 16px; }
+        .dual-card h3 { font-size: 1.4em; color: #0F172A; margin-bottom: 8px; }
+        .dual-card p { color: #64748B; font-size: 0.95em; margin-bottom: 20px; line-height: 1.6; flex: 1; }
+        .dual-card .card-link { color: #1050D1; font-weight: 600; font-size: 0.95em; }
+
+        h2 { font-size: 1.5em; margin: 56px 0 20px; padding-bottom: 14px; border-bottom: 1px solid #E2E8F0; color: #1050D1; font-weight: 600; position: relative; }
+        h2::after { content: ""; position: absolute; left: 0; bottom: -1px; width: 90px; height: 2px; background: linear-gradient(90deg,#1050D1,#23D1D1); }
+        p { margin-bottom: 16px; font-size: 1.02em; color: #334155; }
+        a { color: #1050D1; text-decoration: none; font-weight: 500; }
+        a:hover { color: #23D1D1; }
+
+        details {
+            margin-bottom: 18px; background: #FFFFFF; border: 1px solid #E2E8F0;
+            border-radius: 14px; padding: 20px 24px; transition: border-color 0.28s ease, box-shadow 0.28s ease;
+        }
+        details:hover { border-color: rgba(16,80,209,0.3); box-shadow: 0 2px 12px rgba(16,80,209,0.06); }
+        summary { cursor: pointer; font-weight: 600; color: #1050D1; outline: none; font-size: 1.08em; }
+        details[open] summary { color: #1050D1; }
+        details p { margin-top: 14px; color: #334155; line-height: 1.85; }
+
+        .content-sites { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; margin: 24px 0; }
+        .content-site {
+            background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px;
+            padding: 20px; text-align: center; transition: all 0.24s ease;
+            text-decoration: none; color: inherit; display: block;
+        }
+        .content-site:hover { border-color: rgba(16,80,209,0.3); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(16,80,209,0.05); }
+        .content-site .site-icon { font-size: 1.8em; margin-bottom: 8px; }
+        .content-site strong { display: block; color: #0F172A; margin-bottom: 4px; }
+        .content-site span { font-size: 0.82em; color: #64748B; }
+
+        .footer { margin-top: 80px; padding-top: 36px; border-top: 1px solid #E2E8F0; color: #64748B; font-size: 0.9em; text-align: center; }
+        .footer a { color: #64748B; margin: 0 12px; }
+        .footer a:hover { color: #1050D1; }
+
+        #nira-app { position: fixed; inset: 0; width: 100vw; height: 100vh; background: #F3EFE8; z-index: 9999; display: none; overflow: auto; isolation: isolate; }
+
+        @media (min-width: 1024px) {
+            .header-nav { display: flex; }
+            .mobile-menu-btn { display: none; }
+            .mobile-menu { display: none !important; }
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .header-nav { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .header-actions .header-btn-light { display: none; }
+            .dual-cta { grid-template-columns: 1fr; }
+            .trust-bar { gap: 40px; }
+        }
+        @media (max-width: 767px) {
+            .header-inner { padding: 0 14px; height: 56px; }
+            .header-nav { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .header-actions .header-btn-light { display: none; }
+            .header-actions .header-btn-primary { display: none; }
+            .mobile-menu { top: 56px; }
+            #landing-page { padding: 30px 14px; }
+            .hero { padding: 40px 20px; border-radius: 18px; margin: 0 0 36px; }
+            .hero h1 { font-size: 1.9em; }
+            .hero p { font-size: 0.95em; }
+            .hero-actions { flex-direction: column; align-items: center; }
+            .hero-cta { width: 100%; text-align: center; }
+            .trust-bar { gap: 24px; }
+            .trust-item strong { font-size: 1.8em; }
+            .dual-cta { grid-template-columns: 1fr; }
+            .content-sites { grid-template-columns: repeat(2, 1fr); }
+            .footer { font-size: 0.82em; }
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/index-D-G-Thh-.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-Dpojpgij.css">
+  <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();if(location.protocol!="file:"){window.__vite_is_modern_browser=true}</script>
+  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+    <div class="header-gradient-bar"></div>
+    <div class="header-inner">
+        <a href="/" class="header-logo">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="8" fill="#1050D1"/>
+                <path d="M8 22 L16 8 L24 22" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="20" r="2" fill="white"/><circle cx="20" cy="20" r="2" fill="white"/>
+            </svg>
+            <span class="logo-text"><span>Cog</span>Cloud</span>
+        </a>
+
+        <nav class="header-nav" id="mainNav"></nav>
+
+        <div class="header-actions">
+            <a href="/?app=1" class="header-btn-light">💭 Try Nira</a>
+            <a href="/contact.html" class="header-btn-primary">Contact Sales</a>
+        </div>
+
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+            <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+        </button>
+    </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner" id="mobileMenuInner"></div>
+</div>
+
+<div id="landing-page">
+
+    <div class="hero">
+        <h1>AI that <span>runs itself</span>.</h1>
+        <p>CogCloud AI builds and operates Nira — 22 digital humans, 5 content sites, zero human touch. One self-growing AI ecosystem.</p>
+        <div class="hero-actions">
+            <a href="/?app=1" class="hero-cta hero-cta-primary">💭 Meet Nira</a>
+            <a href="/cogcloud.html" class="hero-cta hero-cta-secondary">Explore CogCloud AI →</a>
+        </div>
+    </div>
+
+    <div class="trust-bar">
+        <div class="trust-item"><strong>5</strong><span>Content Sites</span></div>
+        <div class="trust-item"><strong>22</strong><span>AI Personas</span></div>
+        <div class="trust-item"><strong>24/7</strong><span>Autonomous</span></div>
+        <div class="trust-item"><strong>-50%</strong><span>Compute Cost</span></div>
+        <div class="trust-item"><strong>5</strong><span>Languages</span></div>
+    </div>
+
+    <div class="dual-cta">
+        <a href="/nira.html" class="dual-card">
+            <div class="card-icon">💭</div>
+            <h3>Nira — AI Companion</h3>
+            <p>22 unique digital humans. Voice and video calls. A relationship that grows with you. Free to start.</p>
+            <span class="card-link">Learn more →</span>
+        </a>
+        <a href="/cogcloud.html" class="dual-card">
+            <div class="card-icon">⚡</div>
+            <h3>CogCloud AI — Content Engine</h3>
+            <p>Autonomous content operations for enterprises. Multi-vertical, multi-channel, zero daily intervention.</p>
+            <span class="card-link">Learn more →</span>
+        </a>
+    </div>
+
+    <h2>Our Content Ecosystem</h2>
+    <p>Five sites, different niches, one engine. All content produced without a newsroom. See what CogCloud AI makes on its own.</p>
+    <div class="content-sites">
+        <a href="https://pixeldragon.qisuanai.com" target="_blank" rel="noopener" class="content-site"><div class="site-icon">🎮</div><strong>PixelDragon</strong><span>Gaming</span></a>
+        <a href="https://techlens.qisuanai.com" target="_blank" rel="noopener" class="content-site"><div class="site-icon">💻</div><strong>TechLens</strong><span>Technology</span></a>
+        <a href="https://chainsight.qisuanai.com" target="_blank" rel="noopener" class="content-site"><div class="site-icon">⛓️</div><strong>ChainSight</strong><span>Crypto & Web3</span></a>
+        <a href="https://fortunenest.qisuanai.com" target="_blank" rel="noopener" class="content-site"><div class="site-icon">🔮</div><strong>FortuneNest</strong><span>Astrology</span></a>
+        <a href="https://ventnest.qisuanai.com" target="_blank" rel="noopener" class="content-site"><div class="site-icon">💚</div><strong>VentNest</strong><span>Wellness</span></a>
+    </div>
+
+    <h2 id="deploy">Core Advantages</h2>
+    <div class="dual-cta" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="dual-card" style="padding: 28px;">
+            <h3 style="font-size:1.1em;">💰 Ultra-Low Compute</h3>
+            <p style="font-size:0.88em;">30%-50% cheaper than mainstream cloud AI pricing — self-hosted GPU clusters with optimized pipelines.</p>
+        </div>
+        <div class="dual-card" style="padding: 28px;">
+            <h3 style="font-size:1.1em;">🤖 Full Pipeline</h3>
+            <p style="font-size:0.88em;">Topics → writing → video → publishing. One system, zero manual steps.</p>
+        </div>
+        <div class="dual-card" style="padding: 28px;">
+            <h3 style="font-size:1.1em;">🏢 Private Deployment</h3>
+            <p style="font-size:0.88em;">Dedicated compute, isolated data, custom AI personas. Enterprise-ready in 5 days.</p>
+        </div>
+    </div>
+
+    <h2>From Our Blog</h2>
+    <p><a href="/blog/ai-content-automation-2026.html">AI Content Automation in 2026 →</a> &nbsp;·&nbsp; <a href="/blog/how-cogcloud-works.html">How CogCloud AI Works →</a> &nbsp;·&nbsp; <a href="/blog/emotional-ai-companion-guide.html">AI Emotional Companions →</a> &nbsp;·&nbsp; <a href="/blog/autonomous-content-seo.html">SEO for AI Content →</a></p>
+
+    <h2>Frequently Asked Questions</h2>
+    <details>
+        <summary>What is CogCloud AI?</summary>
+        <p>CogCloud AI is a system we built that handles everything from ideas to finished articles and videos — across five different content sites. No writers, no editors, no manual publishing. On top of that infrastructure, we built Nira — 22 digital humans you can actually talk to. Voice, video, text. It's how we prove our technology works in the real world.</p>
+    </details>
+    <details>
+        <summary>What is Nira?</summary>
+        <p>Nira is our AI companion app with 22 unique digital human personas. Voice calls, video calls, and text chat — built on the same infrastructure that powers CogCloud AI.</p>
+    </details>
+    <details>
+        <summary>Can enterprises purchase private deployment?</summary>
+        <p>We offer full private deployment packages, including the complete content production pipeline, dedicated compute resources, and ongoing technical support.</p>
+    </details>
+    <details>
+        <summary>Why is your compute cost lower?</summary>
+        <p>We run our own GPU clusters, negotiate long-term model partnerships, and use local cache inference to bring costs down by 30%-50% compared to standard cloud AI pricing.</p>
+    </details>
+    <details>
+        <summary>Does Nira support custom digital humans?</summary>
+        <p>Yes. Enterprise clients can commission custom AI personas and digital human avatars tailored to their brand or use case.</p>
+    </details>
+
+    <div class="footer">
+        <p>
+            <a href="/nira.html">Nira</a> |
+            <a href="/cogcloud.html">CogCloud AI</a> |
+            <a href="/pricing.html">Pricing</a> |
+            <a href="/blog/">Blog</a> |
+            <a href="/about.html">About</a> |
+            <a href="/contact.html">Contact</a> |
+            <a href="https://www.youtube.com/@AutoPassiveAIFactory" target="_blank" rel="noopener">📺 YouTube</a>
+        </p>
+        <p style="margin-top:8px;">
+            <a href="/privacy-policy.html">Privacy Policy</a> |
+            <a href="/terms-of-service.html">Terms of Service</a>
+        </p>
+        <p style="margin-top:8px;">&copy; 2026 QisuanAI. All rights reserved. CogCloud AI and Nira are trademarks of QisuanAI.</p>
+    </div>
+</div>
+
+<div id="nira-app"><div id="root"></div></div>
+
+
+<script>
+(function() {
+    const NAV_CONFIG = {
+        logo: { href: "/", text: "CogCloud", accent: "Cog" },
+        menus: [
+            {
+                id: "products",
+                label: "Products",
+                href: "#",
+                hasMega: true,
+                columns: [
+                    {
+                        label: "FOR INDIVIDUALS",
+                        items: [
+                            { icon: "💭", label: "Nira AI Companion", desc: "22 personas · Voice & video calls · AI cloning", href: "/nira.html", featured: true, badge: "NEW" },
+                            { icon: "🎭", label: "Personas Gallery", desc: "Meet all 22 characters and their full backstories", href: "/nira-personas.html" },
+                        ],
+                    },
+                    {
+                        label: "FOR BUSINESS",
+                        items: [
+                            { icon: "⚡", label: "CogCloud AI Platform", desc: "Autonomous content operations · CEO Agent", href: "/cogcloud.html" },
+                            { icon: "📊", label: "Pricing", desc: "Plans for individuals, creators, and enterprises", href: "/pricing.html" },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: "solutions",
+                label: "Solutions",
+                href: "#",
+                hasMega: true,
+                columns: [
+                    {
+                        label: "BY INDUSTRY",
+                        items: [
+                            { icon: "📰", label: "Media & Publishing", href: "#", compact: true },
+                            { icon: "🛒", label: "E-Commerce", href: "#", compact: true },
+                            { icon: "📚", label: "Education", href: "#", compact: true },
+                            { icon: "⛓️", label: "Blockchain & Web3", href: "#", compact: true },
+                            { icon: "💚", label: "Mental Wellness", href: "#", compact: true },
+                        ],
+                    },
+                    {
+                        label: "BY ROLE",
+                        items: [
+                            { icon: "🎬", label: "Content Creators", href: "#", compact: true },
+                            { icon: "📊", label: "Marketing Teams", href: "#", compact: true },
+                            { icon: "👨‍💻", label: "Indie Developers", href: "#", compact: true },
+                            { icon: "🏢", label: "Agencies", href: "#", compact: true },
+                            { icon: "🏭", label: "Enterprise", href: "#", compact: true },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: "developers",
+                label: "Developers",
+                href: "#",
+                hasMega: true,
+                columns: [
+                    {
+                        items: [
+                            { icon: "📘", label: "API Reference", desc: "REST & WebSocket APIs", href: "#" },
+                            { icon: "📦", label: "SDKs & Libraries", desc: "Python, Node.js, Go", href: "#" },
+                            { icon: "📋", label: "Changelog", desc: "Latest updates & breaking changes", href: "#" },
+                        ],
+                    },
+                    {
+                        items: [
+                            { icon: "📖", label: "Documentation", desc: "Getting started & guides", href: "#" },
+                            { icon: "🟢", label: "System Status", desc: "Uptime & incident history", href: "#" },
+                            { icon: "🐙", label: "GitHub", desc: "Open-source projects", href: "https://github.com/qisuanai", external: true },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: "resources",
+                label: "Resources",
+                href: "#",
+                hasMega: true,
+                columns: [
+                    {
+                        items: [
+                            { icon: "📝", label: "Blog", desc: "AI insights & product updates", href: "/blog/" },
+                            { icon: "📺", label: "YouTube", desc: "Watch CogCloud AI in action", href: "https://www.youtube.com/@AutoPassiveAIFactory", external: true },
+                            { icon: "📄", label: "Whitepaper", desc: "Technical deep-dives", href: "#" },
+                        ],
+                    },
+                    {
+                        items: [
+                            { icon: "❓", label: "Help Center", desc: "FAQs & support articles", href: "#" },
+                            { icon: "👥", label: "Community", desc: "Discord & forums", href: "#" },
+                            { icon: "🏢", label: "About Us", desc: "Our team & mission", href: "/about.html" },
+                        ],
+                    },
+                ],
+            },
+            {
+                id: "pricing",
+                label: "Pricing",
+                href: "/pricing.html",
+                hasMega: false,
+            },
+        ],
+        actions: {
+            secondary: { label: "💭 Try Nira", href: "/?app=1" },
+            primary:   { label: "Contact Sales", href: "/contact.html" },
+        },
+    };
+
+    function renderMegaItem(item) {
+        const a = document.createElement("a");
+        a.href = item.href;
+        a.className = "mega-item";
+        if (item.featured) a.classList.add("featured");
+        if (item.compact) a.classList.add("compact");
+        if (item.external) { a.target = "_blank"; a.rel = "noopener"; }
+        const icon = document.createElement("span");
+        icon.className = "mega-icon"; icon.textContent = item.icon || ""; a.appendChild(icon);
+        const content = document.createElement("div");
+        content.className = "mega-content";
+        const strong = document.createElement("strong");
+        strong.textContent = item.label; content.appendChild(strong);
+        if (item.badge) { const badge = document.createElement("span"); badge.className = "mega-badge"; badge.textContent = item.badge; strong.appendChild(badge); }
+        if (item.desc && !item.compact) { const desc = document.createElement("span"); desc.className = "mega-desc"; desc.textContent = item.desc; content.appendChild(desc); }
+        a.appendChild(content);
+        if (item.compact && item.desc) { const sub = document.createElement("span"); sub.className = "mega-sub"; sub.textContent = item.desc; a.appendChild(sub); }
+        return a;
+    }
+    function renderMegaColumn(col) {
+        const div = document.createElement("div"); div.className = "mega-column";
+        if (col.label) { const label = document.createElement("div"); label.className = "mega-label"; label.textContent = col.label; div.appendChild(label); }
+        (col.items || []).forEach(item => div.appendChild(renderMegaItem(item)));
+        return div;
+    }
+    function renderMegaMenu(menuConfig) {
+        const mega = document.createElement("div"); mega.className = "mega-menu";
+        mega.id = "mega" + menuConfig.id.charAt(0).toUpperCase() + menuConfig.id.slice(1);
+        const inner = document.createElement("div"); inner.className = "mega-inner";
+        if (menuConfig.columns.length <= 2 && menuConfig.columns.every(c => (c.items || []).length <= 6)) inner.classList.add("two-col");
+        menuConfig.columns.forEach(col => inner.appendChild(renderMegaColumn(col)));
+        mega.appendChild(inner); return mega;
+    }
+    function renderMainNav() {
+        const nav = document.getElementById("mainNav"); if (!nav) return; nav.innerHTML = "";
+        NAV_CONFIG.menus.forEach(menu => {
+            const navItem = document.createElement("div"); navItem.className = "nav-item";
+            if (menu.hasMega) navItem.classList.add("has-mega");
+            const link = document.createElement("a"); link.href = menu.href; link.className = "nav-link";
+            link.textContent = menu.label;
+            if (menu.hasMega) { const arrow = document.createElement("span"); arrow.className = "arrow"; arrow.textContent = "▾"; link.appendChild(arrow); navItem.appendChild(renderMegaMenu(menu)); }
+            navItem.appendChild(link); nav.appendChild(navItem);
+        });
+    }
+    function buildMobileSections() {
+        const sections = [];
+        NAV_CONFIG.menus.forEach(menu => {
+            if (!menu.hasMega) { sections.push({ title: null, links: [{ label: menu.label, href: menu.href }] }); return; }
+            menu.columns.forEach(col => {
+                const sec = { title: col.label || null, links: [] };
+                (col.items || []).forEach(item => { sec.links.push({ label: (item.icon ? item.icon + " " : "") + item.label, href: item.href, external: item.external || false }); });
+                sections.push(sec);
+            });
+        });
+        return sections;
+    }
+    function renderMobileMenu() {
+        const container = document.getElementById("mobileMenuInner"); if (!container) return; container.innerHTML = "";
+        buildMobileSections().forEach(sec => {
+            const div = document.createElement("div"); div.className = "mobile-section";
+            if (sec.title) { const title = document.createElement("div"); title.className = "mobile-section-title"; title.textContent = sec.title; div.appendChild(title); }
+            sec.links.forEach(link => { const a = document.createElement("a"); a.href = link.href; a.textContent = link.label; if (link.external) { a.target = "_blank"; a.rel = "noopener"; } div.appendChild(a); });
+            container.appendChild(div);
+        });
+        const actionsDiv = document.createElement("div"); actionsDiv.className = "mobile-actions";
+        if (NAV_CONFIG.actions.secondary) { const a2 = document.createElement("a"); a2.href = NAV_CONFIG.actions.secondary.href; a2.className = "mobile-btn-primary"; a2.textContent = NAV_CONFIG.actions.secondary.label; actionsDiv.appendChild(a2); }
+        if (NAV_CONFIG.actions.primary) { const a1 = document.createElement("a"); a1.href = NAV_CONFIG.actions.primary.href; a1.className = "mobile-btn-secondary"; a1.textContent = NAV_CONFIG.actions.primary.label; actionsDiv.appendChild(a1); }
+        container.appendChild(actionsDiv);
+    }
+    function initInteractions() {
+        const menuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener("click", () => { const isOpen = mobileMenu.classList.toggle("open"); menuBtn.classList.toggle("open", isOpen); });
+        }
+        document.addEventListener("keydown", (e) => { if (e.key === "Escape") { if (mobileMenu) { mobileMenu.classList.remove("open"); menuBtn.classList.remove("open"); } document.activeElement?.blur(); } });
+        document.addEventListener("click", (e) => { const link = e.target.closest("a"); if (link && mobileMenu && mobileMenu.classList.contains("open")) { setTimeout(() => { mobileMenu.classList.remove("open"); if (menuBtn) menuBtn.classList.remove("open"); }, 150); } });
+    }
+    function initScrollEffect() {
+        const header = document.getElementById("siteHeader"); if (!header) return;
+        window.addEventListener("scroll", () => header.classList.toggle("scrolled", window.scrollY > 60));
+    }
+    function initAppToggle() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const isApp = urlParams.get("app") === "1";
+        const landing = document.getElementById("landing-page");
+        const nira = document.getElementById("nira-app");
+        document.body.style.overflow = "auto";
+        document.documentElement.style.overflow = "auto";
+        if (isApp) {
+            landing.style.display = "none"; nira.style.display = "block";
+            document.body.style.overflow = "hidden"; document.documentElement.style.overflow = "hidden";
+        } else {
+            nira.style.display = "none"; landing.style.display = "block";
+            document.body.style.overflow = "auto"; document.documentElement.style.overflow = "auto";
+        }
+    }
+    window.addEventListener("beforeunload", () => { document.body.style.overflow = "auto"; document.documentElement.style.overflow = "auto"; });
+
+    function bootstrap() { renderMainNav(); renderMobileMenu(); initInteractions(); initScrollEffect(); initAppToggle(); }
+    if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", bootstrap); } else { bootstrap(); }
+})();
+</script>
+  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-D82A-DW-.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/index-legacy-CQIDRFYd.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+</body>
+</html>
