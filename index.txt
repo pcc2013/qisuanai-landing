@@ -370,20 +370,20 @@
         </a>
     </div>
 
-    <h2>See It in Action</h2>
+        <h2>See It in Action</h2>
     <p>Watch CogCloud AI produce and publish content — from script to video — entirely on its own.</p>
     <div class="video-grid">
         <div class="video-card">
-            <iframe src="https://www.youtube.com/embed/fdYnRjZjTJE" title="The AI Model Family Tree Nobody Talks About" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-            <div class="video-info"><div class="video-title">The AI Model Family Tree Nobody Talks About</div></div>
+            <iframe src="https://www.youtube.com/embed/{{VIDEO_1_ID}}" title="{{VIDEO_1_TITLE}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-info"><div class="video-title">{{VIDEO_1_TITLE}}</div></div>
         </div>
         <div class="video-card">
-            <iframe src="https://www.youtube.com/embed/bTNMjBEzQbE" title="Is the AI hype behind Anthropic truly worth it, or is there " frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-            <div class="video-info"><div class="video-title">Is the AI hype behind Anthropic truly worth it, or is there </div></div>
+            <iframe src="https://www.youtube.com/embed/{{VIDEO_2_ID}}" title="{{VIDEO_2_TITLE}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-info"><div class="video-title">{{VIDEO_2_TITLE}}</div></div>
         </div>
         <div class="video-card">
-            <iframe src="https://www.youtube.com/embed/EiyuSmrZDxk" title="I Played Nintendo Games Wrong For 10 Years (Here&#39;s What " frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-            <div class="video-info"><div class="video-title">I Played Nintendo Games Wrong For 10 Years (Here&#39;s What </div></div>
+            <iframe src="https://www.youtube.com/embed/{{VIDEO_3_ID}}" title="{{VIDEO_3_TITLE}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-info"><div class="video-title">{{VIDEO_3_TITLE}}</div></div>
         </div>
     </div>
     <p style="text-align:center; margin:16px 0 40px;"><a href="https://www.youtube.com/@AutoPassiveAIFactory" target="_blank" rel="noopener">📺 More videos on YouTube →</a></p>
