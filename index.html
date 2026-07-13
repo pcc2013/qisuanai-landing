@@ -275,10 +275,6 @@
             .footer { font-size: 0.82em; }
         }
     </style>
-  <script type="module" crossorigin src="/assets/index-D-G-Thh-.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-Dpojpgij.css">
-  <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();if(location.protocol!="file:"){window.__vite_is_modern_browser=true}</script>
-  <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
 </head>
 <body>
 
@@ -347,30 +343,30 @@
     <h2>Our Content Ecosystem</h2>
     <p>Five sites, different niches, one engine. Explore our content network below.</p>
     <div class="content-sites">
-        <a href="https://pixeldragon.qisuanai.com" target="_blank" rel="noopener" class="content-site">
+        <a href="{{PIXELDRAGON_URL}}" target="_blank" rel="noopener" class="content-site">
             <div class="site-icon">🎮</div>
             <strong>PixelDragon</strong>
-            <span class="article-title">PixelDragon — today's updates →</span>
+            <span class="article-title">{{PIXELDRAGON_TITLE}}</span>
         </a>
-        <a href="https://techlens.qisuanai.com" target="_blank" rel="noopener" class="content-site">
+        <a href="{{TECHLENS_URL}}" target="_blank" rel="noopener" class="content-site">
             <div class="site-icon">💻</div>
             <strong>TechLens</strong>
-            <span class="article-title">TechLens — today's updates →</span>
+            <span class="article-title">{{TECHLENS_TITLE}}</span>
         </a>
-        <a href="https://chainsight.qisuanai.com" target="_blank" rel="noopener" class="content-site">
+        <a href="{{CHAINSIGHT_URL}}" target="_blank" rel="noopener" class="content-site">
             <div class="site-icon">⛓️</div>
             <strong>ChainSight</strong>
-            <span class="article-title">ChainSight — today's updates →</span>
+            <span class="article-title">{{CHAINSIGHT_TITLE}}</span>
         </a>
-        <a href="https://fortunenest.qisuanai.com" target="_blank" rel="noopener" class="content-site">
+        <a href="{{FORTUNENEST_URL}}" target="_blank" rel="noopener" class="content-site">
             <div class="site-icon">🔮</div>
             <strong>FortuneNest</strong>
-            <span class="article-title">FortuneNest — today's updates →</span>
+            <span class="article-title">{{FORTUNENEST_TITLE}}</span>
         </a>
-        <a href="https://ventnest.qisuanai.com" target="_blank" rel="noopener" class="content-site">
+        <a href="{{VENTNEST_URL}}" target="_blank" rel="noopener" class="content-site">
             <div class="site-icon">💚</div>
             <strong>VentNest</strong>
-            <span class="article-title">VentNest — today's updates →</span>
+            <span class="article-title">{{VENTNEST_TITLE}}</span>
         </a>
     </div>
 
@@ -378,16 +374,16 @@
     <p>Watch CogCloud AI produce and publish content — from script to video — entirely on its own.</p>
     <div class="video-grid">
         <div class="video-card">
-            <iframe src="https://www.youtube.com/embed/fdYnRjZjTJE" title="The AI Model Family Tree Nobody Talks About" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-            <div class="video-info"><div class="video-title">The AI Model Family Tree Nobody Talks About</div></div>
+            <iframe src="https://www.youtube.com/embed/{{VIDEO_1_ID}}" title="{{VIDEO_1_TITLE}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-info"><div class="video-title">{{VIDEO_1_TITLE}}</div></div>
         </div>
         <div class="video-card">
-            <iframe src="https://www.youtube.com/embed/bTNMjBEzQbE" title="Is the AI hype behind Anthropic truly worth it, or is there " frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-            <div class="video-info"><div class="video-title">Is the AI hype behind Anthropic truly worth it, or is there </div></div>
+            <iframe src="https://www.youtube.com/embed/{{VIDEO_2_ID}}" title="{{VIDEO_2_TITLE}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-info"><div class="video-title">{{VIDEO_2_TITLE}}</div></div>
         </div>
         <div class="video-card">
-            <iframe src="https://www.youtube.com/embed/EiyuSmrZDxk" title="I Played Nintendo Games Wrong For 10 Years (Here&#39;s What " frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-            <div class="video-info"><div class="video-title">I Played Nintendo Games Wrong For 10 Years (Here&#39;s What </div></div>
+            <iframe src="https://www.youtube.com/embed/{{VIDEO_3_ID}}" title="{{VIDEO_3_TITLE}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="video-info"><div class="video-title">{{VIDEO_3_TITLE}}</div></div>
         </div>
     </div>
     <p style="text-align:center; margin:16px 0 40px;"><a href="https://www.youtube.com/@AutoPassiveAIFactory" target="_blank" rel="noopener">📺 More videos on YouTube →</a></p>
@@ -433,7 +429,8 @@
 </div>
 
 <div id="nira-app"><div id="root"></div></div>
-
+
+<script type="module" src="/src/main.tsx"></script>
 
 <script>
 (function() {
@@ -650,8 +647,5 @@
     if (document.readyState === "loading") { document.addEventListener("DOMContentLoaded", bootstrap); } else { bootstrap(); }
 })();
 </script>
-  <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
-  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-D82A-DW-.js"></script>
-  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/index-legacy-CQIDRFYd.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
 </body>
 </html>
